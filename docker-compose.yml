@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+    container_name: redis_cache
+    expose:
+    - 6379
+  frontend:
+    image: frontend_image
+    build:
+      context: ~/builds/xrzzM6eH/0/mikhail.kalugin/LOACALReactJS-Skill-JobCatalogueWeb
+    container_name: frontend
+    volumes:
+    - /etc/letsencrypt:/etc/letsencrypt
+    - /data/letsencrypt:/data/letsencrypt
+    ports:
+    - 80:80
+    - 443:443
+  node_app:
+    image: node_api_image
+    build:
+      context: ./
+    container_name: node_api
+    depends_on:
+    - redis
+    ports:
+    - 8082:8082
+    env_file:
+    - ./env_file.env

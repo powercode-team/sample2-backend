@@ -1,0 +1,36 @@
+{
+    "name": "skill-jobcatalogue-web-tool",
+    "version": "1.0.0",
+    "description": "Skill-JobCatalogueWebTool",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index",
+        "serve": "nodemon index"
+    },
+    "dependencies": {
+        "accept-language-parser": "1.5.0",
+        "await-to-js": "2.0.1",
+        "body-parser": "1.17.2",
+        "express": "4.15.3",
+        "express-joi-validation": "0.1.0",
+        "helmet": "3.8.1",
+        "joi": "10.6.0",
+        "knex": "0.15.2",
+        "knex-logger": "0.1.0",
+        "lodash": "^4.17.11",
+        "morgan": "1.9.1",
+        "node-cleanup": "2.1.2",
+        "node-excel-export": "1.4.4",
+        "nodemon": "^1.18.6",
+        "objection": "1.2.2",
+        "objection-db-errors": "1.0.0",
+        "pg": "7.4.3",
+        "redis": "2.8.0",
+        "request": "2.87.0",
+        "request-promise": "4.2.2",
+        "swagger-ui-express": "2.0.7"
+    },
+    "devDependencies": {},
+    "author": "Vladyslav Lazurenko",
+    "license": "ISC"
+}

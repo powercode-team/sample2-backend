@@ -1,0 +1,637 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Docs for Skill-Job Catalogue WebTool",
+    "version": "1.0.0",
+    "title": "Skill-Job Catalogue WebTool routes"
+  },
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "tags": [],
+  "paths": {
+    "/wiki-sync": {
+      "post": {
+        "tags": [
+          "Wiki Sync"
+        ],
+        "summary": "Synchronise wiki link for each skill",
+        "operationId": "wiki-sync",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "catalog_id": {
+                  "type": "number",
+                  "example": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalSkillsWillBeSync": {
+                  "type": "number"
+                },
+                "approximateTimeExecution": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/skill-cluster/color": {
+      "get": {
+        "tags": [
+          "Skill Cluster"
+        ],
+        "summary": "Get skill cluster color list",
+        "operationId": "skill-cluster-color",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "colors": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "display_color_id": {
+                            "type": "number"
+                          },
+                          "display_color": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "colors": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skill-cluster/icon": {
+      "get": {
+        "tags": [
+          "Skill Cluster"
+        ],
+        "summary": "Get skill cluster icon list",
+        "operationId": "skill-cluster-icon",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "icons": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "display_icon_id": {
+                            "type": "number"
+                          },
+                          "display_icon": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "icons": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/skill-catalog/{id}/cluster-group": {
+      "get": {
+        "tags": [
+          "Skill Cluster"
+        ],
+        "summary": "Get cluster group list",
+        "operationId": "skill-group-cluster-list",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Catalog id",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "query",
+            "name": "skill_cluster_id",
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "cluster_group": {
+                      "type": "array",
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "cluster_group_name": {
+                            "type": "string"
+                          },
+                          "language_id": {
+                            "type": "number"
+                          },
+                          "assign": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "skill_cluster": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Skill Cluster"
+        ],
+        "summary": "Create cluster group",
+        "operationId": "skill-group-cluster-create",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Catalog id",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cluster_group_name": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "skill_catalog_id": {
+                      "type": "number"
+                    },
+                    "cluster_group_details": {
+                      "type": "object",
+                      "properties": {
+                        "cluster_group_name": {
+                          "type": "string"
+                        },
+                        "language_id": {
+                          "type": "number"
+                        },
+                        "cluster_group_id": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "cluster_group_id": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/cluster-group/{id}": {
+      "patch": {
+        "tags": [
+          "Skill Cluster"
+        ],
+        "summary": "Patch cluster group",
+        "operationId": "skill-group-cluster-patch",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Catalog id",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cluster_group_name": {
+                  "type": "string",
+                  "required": true
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Success"
+          },
+          "400": {
+            "$ref": "#/responses/ValidationError"
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "requestResult": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Skill Cluster"
+        ],
+        "summary": "Delete cluster group",
+        "operationId": "skill-group-cluster-delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Cluster group id",
+            "required": true,
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content"
+          },
+          "403": {
+            "$ref": "#/responses/Forbidden"
+          },
+          "400": {
+            "$ref": "#/responses/ValidationError"
+          }
+        }
+      }
+    },
+    "/languages": {
+      "get": {
+        "tags": [
+          "Configs"
+        ],
+        "summary": "Get all languages",
+        "operationId": "get-all-languages",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "requestStatus": {
+                  "type": "boolean",
+                  "default": true
+                },
+                "requestResult": {
+                  "type": "object",
+                  "properties": {
+                    "languages": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Language"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/ValidationError"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "ValidationError": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "requestStatus": {
+            "type": "boolean",
+            "default": false
+          },
+          "requestResult": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "description": "Validation Error"
+    },
+    "Success": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "requestStatus": {
+            "type": "boolean",
+            "default": true
+          },
+          "requestResult": {
+            "type": "object"
+          }
+        }
+      },
+      "description": "Accepted"
+    },
+    "Forbidden": {
+      "type": "object",
+      "description": "Access Denied",
+      "properties": {
+        "requestStatus": {
+          "type": "boolean",
+          "default": false
+        },
+        "requestResult": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "object",
+              "default": "Error description",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "NotFound": {
+      "schema": {
+        "type": "object",
+        "properties": {
+          "requestStatus": {
+            "type": "boolean",
+            "default": false
+          },
+          "requestResult": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "type": "object",
+                "default": "404 Not Found",
+                "properties": {
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "description": "Not Found"
+    }
+  },
+  "definitions": {
+    "SkillCatalog": {
+      "properties": {
+        "skill_catalog_id": {
+          "type": "number"
+        },
+        "created_by_user_id": {
+          "type": "number"
+        },
+        "is_private": {
+          "type": "boolean"
+        },
+        "skill_catalog_name": {
+          "type": "string"
+        },
+        "language_id": {
+          "type": "number"
+        }
+      }
+    },
+    "JobCatalog": {
+      "properties": {
+        "job_catalog_id": {
+          "type": "number"
+        },
+        "job_catalog_name": {
+          "type": "string"
+        },
+        "created_by_user_id": {
+          "type": "number"
+        },
+        "is_private": {
+          "type": "boolean"
+        },
+        "language_id": {
+          "type": "number"
+        }
+      }
+    },
+    "Skill": {
+      "properties": {
+        "level#_id": {
+          "type": "number"
+        },
+        "level#_name": {
+          "type": "string"
+        },
+        "language_id": {
+          "type": "number"
+        },
+        "wiki_count": {
+          "type": "number"
+        },
+        "skill_importance_name": {
+          "type": "string"
+        }
+      }
+    },
+    "Job": {
+      "properties": {
+        "level#_id": {
+          "type": "number"
+        },
+        "level#_name": {
+          "type": "string"
+        },
+        "linked_skills_count": {
+          "type": "number"
+        },
+        "language_id": {
+          "type": "number"
+        },
+        "wiki_url": {
+          "type": "string"
+        },
+        "job_importance_name": {
+          "type": "string"
+        }
+      }
+    },
+    "Language": {
+      "properties": {
+        "language_id": {
+          "type": "number"
+        },
+        "language_code": {
+          "type": "string"
+        },
+        "language_name": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

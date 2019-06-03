@@ -1,0 +1,12 @@
+deploy:
+  only:
+    - master
+  script:
+    - git checkout master;
+    - git pull;
+    - cp /home/gitlab-runner/env/env_file.env ./env_file.env
+    - docker-compose down;
+    - docker-compose up --build -d;
+  stage: deploy
+stages:
+  - deploy
