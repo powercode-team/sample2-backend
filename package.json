@@ -25,7 +25,7 @@
         "objection": "1.2.2",
         "objection-db-errors": "1.0.0",
         "pg": "7.4.3",
-        "redis": "2.8.0",
+        "redis": "3.1.1",
         "request": "2.87.0",
         "request-promise": "4.2.2",
         "swagger-ui-express": "2.0.7"
