@@ -17,7 +17,7 @@
         "joi": "10.6.0",
         "knex": "0.15.2",
         "knex-logger": "0.1.0",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.21",
         "morgan": "1.9.1",
         "node-cleanup": "2.1.2",
         "node-excel-export": "1.4.4",
